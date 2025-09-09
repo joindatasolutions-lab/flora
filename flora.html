@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floristería Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7e9e9;
+        }
+    </style>
+</head>
+<body class="bg-black-50 text-gray-800">
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center my-8">
+            <h1 class="text-5xl font-bold text-black-800">Floristería Online</h1>
+            <p class="text-xl text-black-600 mt-2">Haz tu pedido de flores frescas y hermosas.</p>
+        </header>
+
+        <main id="app-container" class="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-2xl mx-auto">
+            
+            <!-- Pantalla de Bienvenida -->
+            <section id="welcome-screen" class="text-center">
+                <h2 class="text-3xl font-semibold text-black-700">¡Bienvenido!</h2>
+                <p class="mt-4 text-lg">Haz clic en el botón para ver nuestro catálogo y comenzar tu pedido.</p>
+                <button onclick="showSection('catalog-screen')" class="mt-8 bg-black-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Ver Catálogo</button>
+            </section>
+
+            <!-- Pantalla del Catálogo -->
+            <section id="catalog-screen" class="hidden">
+                <h2 class="text-3xl font-semibold text-black-700 text-center mb-6">Nuestro Catálogo</h2>
+                <div id="loading-message" class="text-center text-lg text-gray-500">Cargando catálogo...</div>
+                <div id="product-list" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Los productos se cargarán dinámicamente con JavaScript -->
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="showSection('user-data-screen')" class="bg-black-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Continuar con el Pedido</button>
+                </div>
+            </section>
+
+            <!-- Pantalla de Datos del Cliente y Envío -->
+            <section id="user-data-screen" class="hidden">
+                <h2 class="text-3xl font-semibold text-black-700 text-center mb-6">Datos Personales y de Envío</h2>
+                <form id="order-form" class="space-y-6">
+                    <div>
+                        <label for="cedula" class="block text-gray-700 font-medium mb-1">Cédula</label>
+                        <input type="text" id="cedula" name="cedula" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" placeholder="Ingresa tu número de cédula" required>
+                    </div>
+                    
+                    <div id="customer-info" class="space-y-4">
+                        <div>
+                            <label for="nombre" class="block text-gray-700 font-medium mb-1">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div>
+                            <label for="apellido" class="block text-gray-700 font-medium mb-1">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div>
+                            <label for="celular" class="block text-gray-700 font-medium mb-1">Celular</label>
+                            <input type="tel" id="celular" name="celular" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div>
+                            <label for="correo" class="block text-gray-700 font-medium mb-1">Correo Electrónico</label>
+                            <input type="email" id="correo" name="correo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6 mt-6">
+                        <h3 class="text-2xl font-semibold text-black-700 mb-4">Detalles del Envío</h3>
+                        <div>
+                            <label for="direccion" class="block text-gray-700 font-medium mb-1">Dirección de Envío</label>
+                            <input type="text" id="direccion" name="direccion" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label for="fecha" class="block text-gray-700 font-medium mb-1">Fecha de Entrega</label>
+                                <input type="date" id="fecha" name="fecha" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                            </div>
+                            <div>
+                                <label for="hora" class="block text-gray-700 font-medium mb-1">Hora de Entrega</label>
+                                <input type="time" id="hora" name="hora" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label for="destinatario" class="block text-gray-700 font-medium mb-1">Nombre del Destinatario</label>
+                            <input type="text" id="destinatario" name="destinatario" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-gray-700 font-medium mb-1">¿Quieres una tarjeta con mensaje?</label>
+                            <div class="flex items-center space-x-4">
+                                <label><input type="radio" name="tarjeta" value="si" onclick="toggleTarjetaMessage(true)"> Sí</label>
+                                <label><input type="radio" name="tarjeta" value="no" onclick="toggleTarjetaMessage(false)" checked> No</label>
+                            </div>
+                        </div>
+                        <div id="tarjeta-message-container" class="mt-4 hidden">
+                            <label for="mensaje-tarjeta" class="block text-gray-700 font-medium mb-1">Mensaje para la Tarjeta</label>
+                            <textarea id="mensaje-tarjeta" name="mensaje-tarjeta" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-8">
+                        <button type="submit" class="bg-black-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-black-600 transition-colors">Enviar Pedido</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Pantalla de Confirmación -->
+            <section id="confirmation-screen" class="hidden text-center">
+                <h2 class="text-3xl font-semibold text-black-700 mb-4">¡Pedido Enviado!</h2>
+                <p class="text-lg">Tu pedido ha sido recibido con éxito. Nos pondremos en contacto contigo pronto para la confirmación del pago.</p>
+                <div class="mt-8">
+                    <button onclick="window.location.reload()" class="bg-black-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Hacer Otro Pedido</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // URL de tu App Script. REEMPLAZA ESTE VALOR CON LA URL DE TU SCRIPT.
+        const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx2TqH1-UEPKq3yflhrkuEszS3R5KDS3uz98dN16wybfvtrgPfmbG_rNGAjPM1OF2Em/exec"; 
+
+        let selectedProducts = [];
+        let allProducts = [];
+        const appContainer = document.getElementById('app-container');
+
+        // Función para mostrar una sección y ocultar las demás
+        function showSection(id) {
+            const sections = appContainer.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        // Renderiza la lista de productos
+        function renderProducts(products) {
+            document.getElementById('loading-message').classList.add('hidden');
+            const productList = document.getElementById('product-list');
+            if (products.error) {
+                productList.innerHTML = `<p class="text-red-500 font-semibold text-center">${products.error}</p>`;
+                return;
+            }
+            productList.innerHTML = products.map(p => `
+                <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="${p.img}" alt="${p.name}" class="rounded-lg w-24 h-24 mb-2">
+                    <h3 class="font-semibold text-lg text-black-700">${p.name}</h3>
+                    <p class="text-black-600 font-bold">$${p.price}</p>
+                    <button data-id="${p.id}" class="add-btn mt-2 bg-black-500 text-white py-1 px-4 rounded-full text-sm hover:bg-black-600 transition-colors">Añadir</button>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.add-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.target.dataset.id;
+                    const product = allProducts.find(p => String(p.id) === productId); // Solución: convertir el ID a string para una comparación correcta
+                    if (product) {
+                        selectedProducts.push(product);
+                        // Reemplazar alert con un modal simple
+                        showModal(`Se añadió ${product.name} al pedido.`);
+                    } else {
+                        console.error("Error: Producto no encontrado con ID", productId);
+                    }
+                });
+            });
+        }
+        
+        // Maneja la visibilidad del campo de mensaje de la tarjeta
+        function toggleTarjetaMessage(show) {
+            const container = document.getElementById('tarjeta-message-container');
+            if (show) {
+                container.classList.remove('hidden');
+                document.getElementById('mensaje-tarjeta').required = true;
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('mensaje-tarjeta').required = false;
+            }
+        }
+
+        // Modal para reemplazar alertas
+        function showModal(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center';
+            modal.innerHTML = `
+                <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm mx-auto text-center">
+                    <p>${message}</p>
+                    <button onclick="this.parentNode.parentNode.remove()" class="mt-4 bg-black-500 text-white py-2 px-4 rounded-full">Aceptar</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        // Lógica de validación de cédula y autocompletado
+        document.getElementById('cedula').addEventListener('blur', async (e) => {
+            const cedula = e.target.value.trim();
+            if (cedula.length > 0) {
+                try {
+                    const response = await fetch(`${APP_SCRIPT_URL}?cedula=${cedula}`);
+                    const data = await response.json();
+                    if (data.encontrado) {
+                        document.getElementById('nombre').value = data.nombre;
+                        document.getElementById('apellido').value = data.apellido;
+                        document.getElementById('celular').value = data.celular;
+                        document.getElementById('correo').value = data.correo;
+                        showModal("¡Cédula encontrada! Los datos han sido autocompletados.");
+                    } else {
+                        showModal("Cédula no registrada. Por favor, ingresa tus datos completos.");
+                        document.getElementById('nombre').value = '';
+                        document.getElementById('apellido').value = '';
+                        document.getElementById('celular').value = '';
+                        document.getElementById('correo').value = '';
+                    }
+                } catch (error) {
+                    console.error("Error al buscar la cédula:", error);
+                    showModal("Ocurrió un error al buscar la cédula. Por favor, intenta de nuevo.");
+                }
+            }
+        });
+
+        // Manejo del envío del formulario
+        document.getElementById('order-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validar que se haya seleccionado al menos un producto
+            if (selectedProducts.length === 0) {
+                showModal("Por favor, selecciona al menos un producto del catálogo.");
+                return;
+            }
+
+            const formData = new FormData(e.target);
+            const data = {
+                productos: selectedProducts.map(p => p.name).join(', '),
+                cedula: formData.get('cedula'),
+                nombre: formData.get('nombre'),
+                apellido: formData.get('apellido'),
+                celular: formData.get('celular'),
+                correo: formData.get('correo'),
+                direccion: formData.get('direccion'),
+                fecha: formData.get('fecha'),
+                hora: formData.get('hora'),
+                destinatario: formData.get('destinatario'),
+                mensajeTarjeta: formData.get('tarjeta') === 'si' ? formData.get('mensaje-tarjeta') : 'No'
+            };
+
+            try {
+                const response = await fetch(APP_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    showSection('confirmation-screen');
+                } else {
+                    showModal("Ocurrió un error al enviar el pedido.");
+                }
+            } catch (error) {
+                console.error("Error al enviar los datos:", error);
+                showModal("Ocurrió un error. Por favor, verifica tu conexión y vuelve a intentarlo.");
+            }
+        });
+
+        // Función para cargar los productos al iniciar la aplicación
+        async function loadProducts() {
+            try {
+                console.log('Cargando productos desde la URL:', `${APP_SCRIPT_URL}?type=products`);
+                const response = await fetch(`${APP_SCRIPT_URL}?type=products`);
+                allProducts = await response.json();
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error("Error al cargar los productos:", error);
+                document.getElementById('loading-message').innerText = "Error al cargar los productos. Por favor, recarga la página.";
+            }
+        }
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            showSection('welcome-screen');
+        });
+    </script>
+</body>
+</html>
