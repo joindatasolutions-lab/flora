@@ -222,7 +222,7 @@
             const cedula = e.target.value.trim();
             if (cedula.length > 0) {
                 try {
-                    const response = await fetch(`${APP_SCRIPT_URL}?cedula=${cedula}`);
+                    const response = await fetch(`${APP_SCRIPT_URL}?type=cedula&cedula=${cedula}`);
                     const data = await response.json();
                     if (data.encontrado) {
                         document.getElementById('nombre').value = data.nombre;
