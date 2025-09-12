@@ -290,8 +290,8 @@
         // Función para cargar los productos al iniciar la aplicación
         async function loadProducts() {
             try {
-                console.log('Cargando productos desde la URL:', `${APP_SCRIPT_URL}?type=products`);
-                const response = await fetch(`${APP_SCRIPT_URL}?type=products`);
+                console.log('Cargando productos desde la URL:', `${APP_SCRIPT_URL}action=getProducts`);
+                const response = await fetch(`${APP_SCRIPT_URL}action=getProducts`);
                 allProducts = await response.json();
                 renderProducts(allProducts);
             } catch (error) {
