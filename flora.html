@@ -11,7 +11,16 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7e9e9;
+            background-color: #e4d2d2; /* Fondo */
+        }
+        /* Color de las letras */
+        .text-gray-800, .text-black-800, .text-black-600, .text-black-700, .text-gray-700, .text-gray-500 {
+            color: #949495;
+        }
+        /* Colores de los botones */
+        .bg-black-500, .bg-black-600, .add-btn {
+            background-color: #dca1b0;
+            color: white !important; /* Letras de los botones */
         }
     </style>
 </head>
@@ -24,26 +33,22 @@
 
         <main id="app-container" class="bg-pink rounded-2xl shadow-xl p-6 md:p-10 max-w-2xl mx-auto">
             
-            <!-- Pantalla de Bienvenida -->
             <section id="welcome-screen" class="text-center">
                 <h2 class="text-3xl font-semibold text-black-700">¡Bienvenido!</h2>
-                <p class="mt-4 text-lg">Haz clic en el botón para ver nuestro catálogo y comenzar tu pedido.</p>
+                <p class="mt-4 text-lg text-gray-800">Haz clic en el botón para ver nuestro catálogo y comenzar tu pedido.</p>
                 <button onclick="showSection('catalog-screen')" class="mt-8 bg-black-500 text-pink font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Ver Catálogo</button>
             </section>
 
-            <!-- Pantalla del Catálogo -->
             <section id="catalog-screen" class="hidden">
                 <h2 class="text-3xl font-semibold text-black-700 text-center mb-6">Nuestro Catálogo</h2>
                 <div id="loading-message" class="text-center text-lg text-gray-500">Cargando catálogo...</div>
                 <div id="product-list" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <!-- Los productos se cargarán dinámicamente con JavaScript -->
-                </div>
+                    </div>
                 <div class="text-center mt-8">
                     <button onclick="showSection('user-data-screen')" class="bg-black-500 text-pink font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Continuar con el Pedido</button>
                 </div>
             </section>
 
-            <!-- Pantalla de Datos del Cliente y Envío -->
             <section id="user-data-screen" class="hidden">
                 <h2 class="text-3xl font-semibold text-black-700 text-center mb-6">Datos Personales y de Envío</h2>
                 <form id="order-form" class="space-y-6">
@@ -109,10 +114,9 @@
                 </form>
             </section>
 
-            <!-- Pantalla de Confirmación -->
             <section id="confirmation-screen" class="hidden text-center">
                 <h2 class="text-3xl font-semibold text-black-700 mb-4">¡Pedido Enviado!</h2>
-                <p class="text-lg">Tu pedido ha sido recibido con éxito. Nos pondremos en contacto contigo pronto para la confirmación del pago.</p>
+                <p class="text-lg text-gray-800">Tu pedido ha sido recibido con éxito. Nos pondremos en contacto contigo pronto para la confirmación del pago.</p>
                 <div class="mt-8">
                     <button onclick="window.location.reload()" class="bg-black-500 text-pink font-bold py-3 px-6 rounded-full shadow-lg hover:bg-black-600 transition-colors">Hacer Otro Pedido</button>
                 </div>
