@@ -59,11 +59,19 @@
                     
                     <div id="customer-info" class="space-y-4">
                         <div>
-                            <label for="nombre" class="block text-gray-700 font-medium mb-1">Nombre</label>
+                            <label for="nombre" class="block text-gray-700 font-medium mb-1">Primer Nombre</label>
                             <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
                         </div>
                         <div>
-                            <label for="apellido" class="block text-gray-700 font-medium mb-1">Apellido</label>
+                            <label for="segundoNombre" class="block text-gray-700 font-medium mb-1">Segundo Nombre</label>
+                            <input type="text" id="apellido" name="apellido" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div>
+                            <label for="apellido" class="block text-gray-700 font-medium mb-1">Primer Apellido</label>
+                            <input type="text" id="apellido" name="apellido" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
+                        </div>
+                        <div>
+                            <label for="segundoApellido" class="block text-gray-700 font-medium mb-1">Segundo Apellido</label>
                             <input type="text" id="apellido" name="apellido" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500" required>
                         </div>
                         <div>
@@ -214,14 +222,18 @@
                     const data = await response.json();
                     if (data.encontrado) {
                         document.getElementById('nombre').value = data.nombre;
+                        document.getElementById('segundoNombre').value = data.segundoNombre;
                         document.getElementById('apellido').value = data.apellido;
+                        document.getElementById('segundoApellido').value = data.segundoApellido;
                         document.getElementById('celular').value = data.celular;
                         document.getElementById('correo').value = data.correo;
                         showModal("¡Cédula encontrada! Los datos han sido autocompletados.");
                     } else {
                         showModal("Cédula no registrada. Por favor, ingresa tus datos completos.");
                         document.getElementById('nombre').value = '';
+                        document.getElementById('segundoNombre').value ='';
                         document.getElementById('apellido').value = '';
+                        document.getElementById('segundoApellido').value ='';
                         document.getElementById('celular').value = '';
                         document.getElementById('correo').value = '';
                     }
