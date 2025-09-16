@@ -31,7 +31,7 @@
             <p class="text-xl text-black-600 mt-2">Haz tu pedido de flores frescas y hermosas.</p>
         </header>
 
-        <main id="app-container" class="bg-pink rounded-2xl shadow-xl p-6 md:p-10 max-w-2xl mx-auto">
+        <main id="app-container" class="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-2xl mx-auto">
             
             <section id="welcome-screen" class="text-center">
                 <h2 class="text-3xl font-semibold text-black-700">¡Bienvenido!</h2>
@@ -168,7 +168,7 @@
                 return;
             }
             productList.innerHTML = products.map(p => `
-                <div class="flex flex-col">
+                <div class="flex flex-col items-center">
                     <img src="${p.img}" alt="${p.name}" class="rounded-lg w-48 h-48 mb-2">
                     <h3 class="font-semibold text-lg text-black-700">${p.name}</h3>
                     <p class="text-black-600 font-bold">$${p.price}</p>
