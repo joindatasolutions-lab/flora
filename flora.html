@@ -168,7 +168,7 @@
                 return;
             }
             productList.innerHTML = products.map(p => `
-                <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                <div class="flex flex-col">
                     <img src="${p.img}" alt="${p.name}" class="rounded-lg w-72 h-96 mb-2">
                     <h3 class="font-semibold text-lg text-black-700">${p.name}</h3>
                     <p class="text-black-600 font-bold">$${p.price}</p>
