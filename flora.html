@@ -169,7 +169,7 @@
             }
             productList.innerHTML = products.map(p => `
                 <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
-                    <img src="${p.img}" alt="${p.name}" class="rounded-lg w-24 h-24 mb-2">
+                    <img src="${p.img}" alt="${p.name}" class="rounded-lg w-48 h-72 mb-2">
                     <h3 class="font-semibold text-lg text-black-700">${p.name}</h3>
                     <p class="text-black-600 font-bold">$${p.price}</p>
                     <button data-id="${p.id}" class="add-btn mt-2 bg-black-500 text-pink py-1 px-4 rounded-full text-sm hover:bg-black-600 transition-colors">Añadir</button>
